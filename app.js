@@ -14,9 +14,8 @@ app.use(expressLayout);
 app.set('layout', './layouts/main'); 
 app.set('view engine', 'ejs');
 
-app.get('', (req, res) => {
-    res.send("Testing app 123");
-});
+app.use('/', mainRoutes); // for main routes
+
 app.listen(PORT, ()=> {
     console.log(`Node app listening on port ${PORT}`);
 });
