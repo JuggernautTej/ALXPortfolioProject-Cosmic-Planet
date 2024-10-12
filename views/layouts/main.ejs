@@ -5,8 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= siteDesc.title %></title>
     <meta name="description" content="<%= siteDesc.description %>">
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript"defer src="/js/universal.js" ></script>
 </head>
 <body>
-    <%- body %>
+    <div class="container">
+        <%- include('../parts/header.ejs') %>
+        <%- body %>
+        <%- include('../parts/footer.ejs') %>
+    </div>
 </body>
 </html>
