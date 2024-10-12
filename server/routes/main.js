@@ -4,7 +4,11 @@ const router = Router();
 
 
 router.get('', (req, res) => {
-    res.render('index');
+    const siteDesc = {
+        title: "Cosmic Planet",
+        description: " A blog site where creativity meets the universe. "
+    }
+    res.render('index', { siteDesc });
 });
 
 router.get('/about', (req, res) => {
