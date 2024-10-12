@@ -4,7 +4,12 @@ const router = Router();
 
 
 router.get('', (req, res) => {
-    res.send("Testing app 1234");
+    res.render('index');
 });
+
+router.get('/about', (req, res) => {
+    res.render('about');
+});
+
 
 export default router;
