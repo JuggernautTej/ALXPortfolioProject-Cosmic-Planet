@@ -1,0 +1,5 @@
+Initialize project with "npm init -y"
+Install depencies
+Install nodemon as a development tool for the project.
+Add the app.js as the start script in the package.json ("start": "app.js")
+Add "dev": "nodemon app.js" to the scripts object in the package.json.
