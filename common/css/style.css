@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --black: #1c1c1c;
+    --gray: #7e7e7e;
+    --gray-light: #e4e4e4;
+    --red: #b30000;
+    --font-size-base: 1rem;
+    --font-size-md: clamp(1.25rem, 0.61vw + 1.1rem, 1.58rem);
+    --font-size-lg: clamp(1.56rem, 1vw + 1.31rem, 2.11rem);
+    --font-size-xl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
+    --font-size-ul: clamp(1.13rem, calc(1.08rem + 0.22vw), 1.25rem);
+    --border-radius: 10px;  
+}
+
+
+body {
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: auto;
+        font-style: normal;
+        color: var(--black);
+        font-size: var(--font-size-base);
+        background-color: #faf5ee;
+        background-image: url("/imgs/img-noise-361x370.png"); 
+        margin: 0;
+}
+
+/* Logo Styling */
+.header__logo {
+    display: flex;
+    align-items: center; /* Aligns logo and text vertically */
+}
+
+.header__logo .logo_img {
+    height: 200px; /* Adjust the height as necessary */
+    width: auto;
+    margin-right: 10px; /* Add some space between the logo and the text */
+    filter: drop-shadow(0px 44px 34px rgba(0,0,0,0.25));
+    overflow: hidden;
+    border-radius: var(--border-radius);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+select,
+textarea {
+    font-family: "Montserrat", sans-serif;
+    font-size: var(--font-size-base);
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.7rem 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.btn {
+    background-color: var(--black);
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.btn-delete {
+    padding: 10px 16px;
+    background-color: var(--red);
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+/* search icon styling */
+.svg-icon.search-icon {
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+  
+    /* On hover: blue strokes */
+    &:focus,
+    &:hover {
+      .search-path {
+        stroke: #299ecc;
+      }
+    }
+  
+    /* On click: thicker black strokes  */
+    &:active {
+      .search-path {
+        stroke: #111516;
+        stroke-width: 2px;
+      }
+    }
+}
+
+/* Layout */
+.container {
+    max-width: 982px;
+    margin: 0 auto;
+    padding: 0 10px;
+  }
+
+.main {
+    padding: 20px 0;
+  }
+
+/* Galaxy Section */
+.galaxy-image {
+    max-height: 528px;
+    filter: drop-shadow(0px 44px 34px rgba(0,0,0,0.25));
+    overflow: hidden;
+    border-radius: var(--border-radius);
+  }
+
+/* Main Header */
+.header {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    padding-top: 10px;
+    grid-template-areas: 
+    "logo button"
+    "menu menu"
+    ;
+}
+
+.header a { color: var(--black); }
+
+@media only screen and (min-width: 768px) {
+    .header { 
+        grid-template-columns: auto 1fr auto;
+        grid-template-areas:
+        "logo menu button" ;
+    };
+}
+
+.header__logo {
+    grid-area: logo;
+    font-weight: 800;
+    font-size: 25px;
+    text-decoration: none;
+}
+
+.header__logo:hover {
+    text-decoration: underline;
+  }
+
+  .header__nav {
+    grid-area: menu;
+    display: flex;
+    justify-content: center;
+  }
+
+.header__button {
+    grid-area: button;
+    display: flex;
+    justify-content: end;
+  }
+
+  .header__button button{
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+    border: 0;
+    padding: 6px 12px;
+    background: none;
+    border-radius: var(--border-radius);
+    border: 2px solid transparent;
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--black);
+  }
+
+.header__button button:hover {
+    border: 2px solid var(--black);    
+  }
