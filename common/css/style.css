@@ -26,6 +26,12 @@ body {
         margin: 0;
 }
 
+a { color: var(var(--black)); }
+h1 { font-size:var(--font-size-xl); }
+h2 { font-size:var(--font-size-lg); }
+h1 { font-size:var(--font-size-md); }
+
+
 /* Logo Styling */
 .header__logo {
     display: flex;
@@ -181,3 +187,128 @@ img {
 .header__button button:hover {
     border: 2px solid var(--black);    
   }
+
+/* Header -> Navigation */
+.header__nav ul{
+    list-style-type: none;
+    display: flex;
+    gap: 1rem;
+    font-weight: 600;
+    padding: 0;
+  }
+
+.header__nav ul a {
+    padding: 10px;
+    text-decoration: none;
+  }
+
+.header__nav ul a:hover {
+    text-decoration: none;
+  }
+
+.header__nav ul a.active {
+    color: var(--gray);
+  }
+
+/* Site Description (siteN) - HomePage */
+.siteN {
+    padding: 10px 0;
+    text-align: center;
+  }
+
+.siteN__heading {
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+
+.siteN__body {
+    font-size: var(--font-size-md);
+    margin: 5px 0 40px 0;
+  }
+
+/* Home Article List */
+.articles__heading {
+    margin-top: 4rem;
+    font-weight: 400;
+  }
+
+.articles-ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    font-size: var(--font-size-ul);
+    display:  flex;
+    flex-direction: column;
+  }
+
+.article-list__date {
+    font-size: var(--font-size-base);
+    color: var(--gray);
+    width: 260px;
+    display: inline-block;
+  }
+
+.articles-ul li a {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-decoration: none;
+    margin: 18px 0;
+  }
+
+@media only screen and (min-width: 768px) {
+    .articles-ul li a { 
+        flex-direction: row;
+        align-items: center;
+    }
+
+.article-list__date {
+      text-align: right;
+    }
+  }
+
+.articles-ul li {
+    font-size: 24px;
+    cursor: pointer;
+    transition: filter 0.1s;
+  }
+
+.articles-ul li:not(:last-child) {
+    border-bottom: 1px solid var(--gray-light);
+  }
+
+.articles-ul li:hover {
+    filter: none;
+  }
+
+.articles-ul:hover li {
+    filter: blur(3px);
+  }
+
+.articles-ul:hover li:hover {
+    filter: none;
+  }
+
+.pagination {
+    font-size: 1.3rem;
+    color: var(--gray);
+    text-decoration: none;
+    margin-top: 40px;
+    display: inline-block;
+  }
+
+.pagination:hover {
+    color: var(--black);
+  }
+
+
+/* .articles {
+    white-space: pre-wrap;
+  } */
+
+/* Footer */
+.footer {
+    margin: 4rem;
+    text-align: center;
+  }
+
