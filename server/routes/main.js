@@ -10,7 +10,7 @@ router.get('', async (req, res) => {
     try {
         const siteDesc = {
             title: "Cosmic Planet",
-            description: " A blog site where creativity meets the universe. "
+            description: " A blog site where creativity meets the universe."
         }
         let perPage = 6; // change back to 10
         let page = req.query.page || 1;
@@ -33,6 +33,24 @@ router.get('', async (req, res) => {
         console.log(error)
     }
 
+});
+
+// Routes
+// GET method for blog by id
+router.get('/post/:id', async (req, res) => {
+
+    try {
+        let slug = req.params.id;
+
+        const data = await Post.findById({ _id: slug});
+        const siteDesc = {
+            title: data.title,
+            description: "A blog site where creativity meets the universe."
+        }
+        res.render('post', { siteDesc, data });
+    } catch (error) {
+        console.log(error)
+    }
 });
 
 
