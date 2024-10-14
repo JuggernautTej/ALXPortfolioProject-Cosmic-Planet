@@ -53,7 +53,31 @@ router.get('/post/:id', async (req, res) => {
     }
 });
 
-
+// Routes
+// POST method for the search bar
+router.post('/search', async (req, res) => {
+    try {
+        const siteDesc = {
+            title: "Search",
+            description: "A blog site where creativity meets the universe."
+        }
+        let searchTerm = req.body.searchTerm;
+        const searchNoSpecialChar = searchTerm.replace(/[^a-zA-Z0-9 ]/g, "")
+        // console.log(searchTerm)
+        const data = await Post.find({
+            $or: [
+                { title: { $regex: new RegExp(searchNoSpecialChar, 'i') }},
+                { body: { $regex: new RegExp(searchNoSpecialChar, 'i') }},
+            ]
+        });
+        res.render("search", {
+            data,
+            siteDesc
+        });
+    } catch (error) {
+        console.log(error)
+    }
+});
 
 
 router.get('/about', (req, res) => {

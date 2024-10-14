@@ -11,6 +11,10 @@ const PORT = 5000 || process.env.PORT;
 // Database Connection
 connectDB();
 
+// Middleware; Enable search through forms
+app.use(express.urlencoded({ extended: true}));
+app.use(express.json());
+
 app.use(express.static('common'));
 
 // Middleware; Templating Engine
