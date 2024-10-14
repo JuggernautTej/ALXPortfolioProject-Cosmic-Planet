@@ -1,15 +1,27 @@
 import { Router } from 'express';
+import Post from '../tables/Post.js';
+
 
 const router = Router();
 
-
-router.get('', (req, res) => {
+// Routes
+// GET method for home route
+router.get('', async (req, res) => {
     const siteDesc = {
         title: "Cosmic Planet",
         description: " A blog site where creativity meets the universe. "
     }
-    res.render('index', { siteDesc });
+    try {
+        const data = await Post.find();
+        res.render('index', { siteDesc, data });    
+    } catch (error) {
+        console.log(error)
+    }
+
 });
+
+
+
 
 router.get('/about', (req, res) => {
     const siteDesc = {

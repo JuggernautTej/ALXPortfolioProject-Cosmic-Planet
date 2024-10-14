@@ -1,11 +1,15 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import expressLayout from 'express-ejs-layouts';
+import connectDB from './server/config/db.js';
 import mainRoutes from './server/routes/main.js';
 
 dotenv.config();
 const app = express();
 const PORT = 5000 || process.env.PORT;
+
+// Database Connection
+connectDB();
 
 app.use(express.static('common'));
 
