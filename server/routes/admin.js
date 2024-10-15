@@ -10,6 +10,7 @@ dotenv.config();
 
 const router = Router();
 const layoutAdmin = '../views/layouts/admin';
+const jwtSecret = process.env.JWT_SECRET;
 
 // Routes
 // GET method for Admin - login page
@@ -20,6 +21,32 @@ router.get('/admin', async (req, res) => {
             description: "A blog site where creativity meets the universe."
         }
         res.render('admin/login', { siteDesc, layout: layoutAdmin });
+    } catch (error) {
+        console.log(error)
+    }
+});
+
+// Routes
+// POST method for Admin - check login
+router.post('/admin', async (req, res) => {
+    try {
+        // Logic is to get the username and password from the form
+        const  { username, password } = req.body;
+        const user = await Users.findOne({ username });
+
+        if(!user) {
+            return res.status(401).json( { message: 'Invalid credentials'} );
+        }
+
+        const isPwdValid = await bcrypt.compare(password,user.password);
+        if(!isPwdValid) {
+            return res.status(401).json( { message: 'Invalid credentials'} );
+        }
+
+        const token = jwt.sign({ userId: user._id}, jwtSecret );
+        res.cookie('token', token, { httpOnly: true });
+        res.redirect('/dashboard');
+        // res.redirect('/admin'); // for testing
     } catch (error) {
         console.log(error)
     }
@@ -46,5 +73,21 @@ router.post('/register', async (req, res) => {
         console.log(error)
     }
 });
+
+// Routes
+// GET method for Admin pages and dashboard
+router.get('/dashboard', async (req, res) => {
+    try {
+        const siteDesc = {
+            title: 'Dashboard',
+            description: 'Something'
+        }
+        // const data = await Post.find();
+        res.render('admin/dashboard', { siteDesc, layout: layoutAdmin });
+    } catch (error) {
+        console.log(error);
+    }
+
+    });
 
 export default router;
