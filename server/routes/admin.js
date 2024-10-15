@@ -12,6 +12,24 @@ const router = Router();
 const layoutAdmin = '../views/layouts/admin';
 const jwtSecret = process.env.JWT_SECRET;
 
+// A middleware function to guard login.
+// Add this function to every page that needs login
+const authMiddleware = (req, res, next) => {
+    const token = req.cookies.token;
+
+    if(!token) {
+        return res.status(401).json( { message: 'Unauthorized' } );// you can render a page here
+    }
+    try {
+        const decoded = jwt.verify(token, jwtSecret);
+        req.userId = decoded.userId;
+        next();
+    } catch (error) {
+        return res.status(401).json( { message: 'Unauthorized' } );
+    }
+}
+
+
 // Routes
 // GET method for Admin - login page
 router.get('/admin', async (req, res) => {
@@ -76,14 +94,18 @@ router.post('/register', async (req, res) => {
 
 // Routes
 // GET method for Admin pages and dashboard
-router.get('/dashboard', async (req, res) => {
+router.get('/dashboard', authMiddleware, async (req, res) => {
     try {
         const siteDesc = {
             title: 'Dashboard',
             description: 'Something'
         }
-        // const data = await Post.find();
-        res.render('admin/dashboard', { siteDesc, layout: layoutAdmin });
+        const data = await Post.find();
+        res.render('admin/dashboard', {
+            siteDesc,
+            data,
+            layout: layoutAdmin
+        });
     } catch (error) {
         console.log(error);
     }
