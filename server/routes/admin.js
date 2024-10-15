@@ -112,4 +112,80 @@ router.get('/dashboard', authMiddleware, async (req, res) => {
 
     });
 
+// Routes
+// GET method for Admin to create new post
+router.get('/add-post', authMiddleware, async (req, res) => {
+    try {
+        const siteDesc = {
+            title: 'Add Post',
+            description: 'Simple add post'
+        }
+        const data = await Post.find();
+        res.render('admin/add-post', {
+            siteDesc,
+            data,
+            layout: layoutAdmin
+        });
+    } catch (error) {
+        console.log(error)
+    }
+    });
+
+// Routes
+// POST method for Admin to create new post
+// edit to add-blog
+router.post('/add-post', authMiddleware, async (req, res) => {
+    try {
+        try {
+            const newPost = new Post({
+                title: req.body.title,
+                body: req.body.body
+            });
+            await Post.create(newPost);
+            res.redirect('/dashboard');
+        } catch (error) {
+            console.log(error);
+        }
+    
+    } catch (error) {
+        console.log(error)
+    }
+    });
+
+// Routes
+// GET method for Admin to create new post
+router.get('/edit-post/:id', authMiddleware, async (req, res) => {
+    try {
+        const siteDesc = {
+            title: 'Edit Post',
+            description: 'Curator Post Management Page'
+        }
+
+        const data = await Post.findOne({ _id: req.params.id });
+         res.render('admin/edit-post', {
+            siteDesc,
+            data,
+            layout: layoutAdmin
+         })
+    } catch (error) {
+        console.log(error)
+    }
+    });
+
+// Routes
+// PUT method for Admin to create new post
+router.put('/edit-post/:id', authMiddleware, async (req, res) => {
+    try {
+        await Post.findByIdAndUpdate(req.params.id, {
+            title: req.body.title,
+            body: req.body.body,
+            updatedAt: Date.now()
+         });
+         res.redirect(`/edit-post/${req.params.id}`)
+    } catch (error) {
+        console.log(error)
+    }
+    });
+
+
 export default router;

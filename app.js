@@ -2,6 +2,7 @@ import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import express from 'express';
 import expressLayout from 'express-ejs-layouts';
+import methodOverride from 'method-override';
 import MongoStore from 'connect-mongo';
 import session from 'express-session';
 import connectDB from './server/config/db.js';
@@ -20,6 +21,8 @@ app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 // Middleware; cookie and session mangement
 app.use(cookieParser());
+// Middleware: To use HTTP verbs
+app.use(methodOverride('_method'));
 
 app.use(session({
     secret: 'keyboard cat',
