@@ -28,7 +28,9 @@ router.get('', async (req, res) => {
             siteDesc,
             data,
             current: page,
-            nextPage:  hasNextPage ? nextPage : null});    
+            nextPage:  hasNextPage ? nextPage : null,
+            currentRoute:'/'
+        });    
     } catch (error) {
         console.log(error)
     }
@@ -47,7 +49,7 @@ router.get('/post/:id', async (req, res) => {
             title: data.title,
             description: "A blog site where creativity meets the universe."
         }
-        res.render('post', { siteDesc, data });
+        res.render('post', { siteDesc, data, currentRoute:`/post/${slug}` });
     } catch (error) {
         console.log(error)
     }
@@ -85,8 +87,10 @@ router.get('/about', (req, res) => {
         title: "Cosmic Planet",
         description: " A blog site where creativity meets the universe. "
     }
-    res.render('about', { siteDesc });
+    res.render('about', { siteDesc, currentRoute:'/about' });
 });
 
 
 export default router;
+
+// need to add current route to every route

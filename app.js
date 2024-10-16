@@ -7,6 +7,7 @@ import MongoStore from 'connect-mongo';
 import session from 'express-session';
 import connectDB from './server/config/db.js';
 import mainRoutes from './server/routes/main.js';
+import isActiveRoute from './server/helpers/routeHelpers.js';
 import theAdmin from './server/routes/admin.js';
 
 dotenv.config();
@@ -41,6 +42,8 @@ app.use(express.static('common'));
 app.use(expressLayout);
 app.set('layout', './layouts/main'); 
 app.set('view engine', 'ejs');
+
+app.locals.isActiveRoute = isActiveRoute;
 
 app.use('/', mainRoutes); // for main routes
 app.use('/', theAdmin); // for the admin route

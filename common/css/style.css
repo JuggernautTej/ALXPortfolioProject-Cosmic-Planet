@@ -78,6 +78,11 @@ textarea {
     background-color: var(--red);
 }
 
+.btn-logout {
+  display: inline-block;
+  text-decoration: none;
+}
+
 img {
     width: 100%;
     height: auto;
@@ -204,7 +209,7 @@ img {
   }
 
 .header__nav ul a:hover {
-    text-decoration: none;
+    text-decoration: underline;
   }
 
 .header__nav ul a.active {
