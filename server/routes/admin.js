@@ -38,7 +38,7 @@ router.get('/admin', async (req, res) => {
             title: "The Curator",
             description: "A blog site where creativity meets the universe."
         }
-        res.render('admin/login', { siteDesc, layout: layoutAdmin });
+        res.render('admin/login', { siteDesc, layout: layoutAdmin, currentRoute:'admin/login' });
     } catch (error) {
         console.log(error)
     }
