@@ -45,6 +45,12 @@ app.set('view engine', 'ejs');
 
 app.locals.isActiveRoute = isActiveRoute;
 
+// Middleware to pass current route to all views
+app.use((req, res, next) => {
+    res.locals.currentRoute = req.path;
+    next();
+});
+
 app.use('/', mainRoutes); // for main routes
 app.use('/', theAdmin); // for the admin route
 
