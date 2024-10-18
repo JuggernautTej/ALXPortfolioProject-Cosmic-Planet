@@ -1,8 +1,21 @@
 import { Router } from 'express';
+import axios from 'axios';
 import Post from '../tables/Post.js';
 
 
 const router = Router();
+
+// NASA API Fetch Function
+async function getNASAImages() {
+    const nasaApiUrl = `https://api.nasa.gov/planetary/apod?api_key=${process.env.NASA_API_KEY}&count=10`;
+    try {
+        const response = await axios.get(nasaApiUrl);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching NASA images:', error);
+        return [];
+    }
+}
 
 // Routes
 // GET method for home route
@@ -24,12 +37,25 @@ router.get('', async (req, res) => {
         const nextPage = parseInt(page) + 1;
         const hasNextPage = nextPage <= Math.ceil(count / perPage);
 
+        const nasaImages= await getNASAImages();
+
+        const fallbackImgs = [
+            '/imgs/fallback1 (1).jpg',
+            '/imgs/fallback1 (2).jpg',
+            '/imgs/fallback1 (3).jpg',
+            '/imgs/fallback1 (4).jpg',
+            '/imgs/fallback1 (5).jpg',
+            '/imgs/fallback1 (6).jpg'
+        ]
+
         res.render('index', { 
             siteDesc,
             data,
             current: page,
             nextPage:  hasNextPage ? nextPage : null,
-            currentRoute:'/'
+            currentRoute:'/',
+            nasaImages,
+            images: fallbackImgs
         });    
     } catch (error) {
         console.log(error)

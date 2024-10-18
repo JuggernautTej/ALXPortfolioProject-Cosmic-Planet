@@ -4,6 +4,30 @@
 </div>
 
 <img src="/imgs/m31-layered-uv-and-optical.webp" alt="Andromeda galaxy" class="galaxy-image" width="981" height="528">
+
+<!-- Slideshow -->
+<section class="nasa-slideshow">
+    <h2>Astronomy Pictures of the Day</h2>
+    <div class="slideshow-container">
+        <% if (nasaImages && nasaImages.length > 0) { %>
+            <% nasaImages.forEach((image, index) => { %>
+                <div class="slide">
+                   <img src="<%= image.url %>" alt="<%= image.title %>" width="600" height="400">
+                   <p class="caption"><%= image.title %></p>
+                </div>
+               <% }) %>
+        <% } else { %>
+            <% images.forEach(image => { %>
+             <div class="slide">
+                <img src="<%= image %>" alt="The Wonder of Space">
+                <p class="caption">The Wonders of Space</p>
+             </div>
+            <% }) %>
+        <% } %>
+    </div>
+</section>
+
+<!-- Blog Posts List -->
 <section class="articles">
     <h2 class="articles__heading">Latest Posts</h2>
     <ul class="articles-ul">

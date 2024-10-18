@@ -17,4 +17,28 @@ document.addEventListener('DOMContentLoaded', function(){
         forSearchBar.classList.remove('open');
         this.setAttribute('aria-expanded', 'true');
     });
+
+// Slideshow logic
+let slideIndex = 0;
+const slides = document.querySelectorAll('.slide');
+
+function showSlides() {
+    for (let x = 0; x < slides.length; x++) {
+        slides[x].style.display = 'none';
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {
+        slideIndex = 1;
+    }
+
+    slides[slideIndex - 1].style.display = 'block';
+
+    setTimeout(showSlides, 5000);
+}
+
+if (slides.length > 0) {
+    showSlides();
+}
 });
+
+

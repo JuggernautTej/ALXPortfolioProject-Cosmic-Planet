@@ -130,6 +130,36 @@ img {
     border-radius: var(--border-radius);
   }
 
+/* NASA Images slideshow */
+.slideshow-container {
+  position: relative;
+  max-width: 600px;
+  margin: auto;
+}
+
+.slide {
+  display: none;
+}
+
+.slide img {
+  max-height: 400px;
+  filter: drop-shadow(0px 44px 34px rgba(0,0,0,0.25));
+  overflow: hidden;
+  border-radius: var(--border-radius);
+}
+
+.action {
+  display: block;
+}
+
+.caption {
+  text-align: center;
+  font-size: 1rem;
+  padding: 8px;
+  /* background-color: rgba(0, 0, 0, 0.5);
+  color: white; */
+}
+
 /* Main Header */
 .header {
     display: grid;
