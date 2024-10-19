@@ -10,22 +10,30 @@ dotenv.config();
 
 const router = Router();
 const layoutAdmin = '../views/layouts/admin';
+const mainLayout = '../views/layouts/main';
 const jwtSecret = process.env.JWT_SECRET;
 
 // A middleware function to guard login.
 // Add this function to every page that needs login
 const authMiddleware = (req, res, next) => {
     const token = req.cookies.token;
+    const siteDesc = {
+        title: 'Error Page',
+        description: 'Something'
+    }
 
     if(!token) {
-        return res.status(401).json( { message: 'Unauthorized' } );// you can render a page here
+        // you can render a page here
+        // return res.status(401).json( { message: 'Unauthorized' } );
+        return res.render('admin/access-error', { siteDesc, layout: mainLayout });
     }
     try {
         const decoded = jwt.verify(token, jwtSecret);
         req.userId = decoded.userId;
         next();
     } catch (error) {
-        return res.status(401).json( { message: 'Unauthorized' } );
+        // return res.status(401).json( { message: 'Unauthorized' } );
+        return res.render('admin/access-error', { siteDesc, layout: mainLayout });
     }
 }
 
@@ -51,14 +59,20 @@ router.post('/admin', async (req, res) => {
         // Logic is to get the username and password from the form
         const  { username, password } = req.body;
         const user = await Users.findOne({ username });
+        const siteDesc = {
+            title: 'Error Page',
+            description: 'Something'
+        }
 
         if(!user) {
-            return res.status(401).json( { message: 'Invalid credentials'} );
+            // return res.status(401).json( { message: 'Invalid credentials'} );
+            res.render('admin/user-error', { siteDesc, layout: mainLayout });
         }
 
         const isPwdValid = await bcrypt.compare(password,user.password);
         if(!isPwdValid) {
-            return res.status(401).json( { message: 'Invalid credentials'} );
+            // return res.status(401).json( { message: 'Invalid credentials'} );
+            res.render('admin/user-error', { siteDesc, layout: layoutAdmin });
         }
 
         const token = jwt.sign({ userId: user._id}, jwtSecret );
@@ -75,16 +89,28 @@ router.post('/admin', async (req, res) => {
 router.post('/register', async (req, res) => {
     try {
         // Logic is to get the username and password from the form
+        const siteDesc = {
+            title: 'User Welcome',
+            description: 'Welcome page for signed in user'
+        }
         const  { username, password } = req.body;
         const hashedPwd = await bcrypt.hash(password, 10)
         try {
             const user = await Users.create({ username, password:hashedPwd });
-            res.status(201).json({ message: 'User Created', user}); // i can substitute this with a page that will display a user page
+            // i can substitute this with a page that will display a user page
+            // res.status(201).json({ message: 'User Created', user}); 
+            return res.render('admin/userWelcomePage', { siteDesc, layout: layoutAdmin, user});
         } catch (error) {
-            if(error.code === 11000) {
-                res.status(409).json({ message: 'User already in use' });
+            const siteDesc = {
+                title: 'Error Page',
+                description: 'Page for server or user errors'
             }
-            res.status(500).json({ message: 'Internal server error'})
+            if(error.code === 11000) {
+                // res.status(409).json({ message: 'User already in use' });
+                return res.render('admin/inUse-error', { siteDesc, layout: mainLayout });
+            }
+            // res.status(500).json({ message: 'Internal server error'});
+            return res.render('admin/server-error', { siteDesc, layout: mainLayout });
         }
 
     } catch (error) {
