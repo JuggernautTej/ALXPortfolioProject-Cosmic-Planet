@@ -80,48 +80,48 @@ You can now go through the web app, view web posts, sign in and manage posts.
 
 
 
-ALXPortfolioProject-Cosmic-Planet/ 
-├── common/ 
-│ ├── css/ 
-│ │ └── style.css 
-│ ├── imgs/ 
-│ │ └── logo1.png 
-│ │ └── logo2.png 
-│ └── js/
-│ │ └── universal.js 
-├── server/ 
-│ ├── config/
-│ │ └── db.js 
-│ ├── helpers/ 
-│ │ └── routeHelpers.png 
-│ ├── routes/ 
-│ │ └── admin.js 
-│ │ └── main.js 
-│ └── tables/ 
-│ │ └── Post.js 
-│ │ └── Users.js 
-├── views/ 
-│ ├── admin/ 
-│ │ └── add-post.ejs 
-│ │ └── dashboard.ejs 
-│ │ └── edit-post.ejs 
-│ │ └── login.ejs 
-│ ├── layouts/ 
-│ │ └── admin.ejs 
-│ │ └── main.ejs 
-│ ├── parts/ 
-│ │ └── adminHeader.ejs 
-│ │ └── header.ejs 
-│ │ └── footer.ejs 
-│ │ └── search.ejs 
-│ ├── index.ejs 
-│ ├── post.ejs 
-│ ├── search.ejs 
-│ └── about.ejs 
-├── .env 
-├── app.js 
-└── package.json
-└── README.md
+    ALXPortfolioProject-Cosmic-Planet/ 
+    ├── common/ 
+    │ ├── css/ 
+    │ │ └── style.css 
+    │ ├── imgs/ 
+    │ │ └── logo1.png 
+    │ │ └── logo2.png 
+    │ └── js/
+    │ │ └── universal.js 
+    ├── server/ 
+    │ ├── config/
+    │ │ └── db.js 
+    │ ├── helpers/ 
+    │ │ └── routeHelpers.png 
+    │ ├── routes/ 
+    │ │ └── admin.js 
+    │ │ └── main.js 
+    │ └── tables/ 
+    │ │ └── Post.js 
+    │ │ └── Users.js 
+    ├── views/ 
+    │ ├── admin/ 
+    │ │ └── add-post.ejs 
+    │ │ └── dashboard.ejs 
+    │ │ └── edit-post.ejs 
+    │ │ └── login.ejs 
+    │ ├── layouts/ 
+    │ │ └── admin.ejs 
+    │ │ └── main.ejs 
+    │ ├── parts/ 
+    │ │ └── adminHeader.ejs 
+    │ │ └── header.ejs 
+    │ │ └── footer.ejs 
+    │ │ └── search.ejs 
+    │ ├── index.ejs 
+    │ ├── post.ejs 
+    │ ├── search.ejs 
+    │ └── about.ejs 
+    ├── .env 
+    ├── app.js 
+    └── package.json
+    └── README.md
 
 ## Contributing
 
