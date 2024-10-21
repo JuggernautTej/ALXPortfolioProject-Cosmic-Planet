@@ -1,6 +1,5 @@
 import bcrypt from 'bcrypt';
 import dotenv from 'dotenv';
-import express from 'express';
 import jwt from 'jsonwebtoken';
 import { Router } from 'express';
 import Post from '../tables/Post.js';

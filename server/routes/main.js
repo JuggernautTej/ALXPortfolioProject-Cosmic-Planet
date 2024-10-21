@@ -28,6 +28,7 @@ router.get('', async (req, res) => {
         let perPage = 6; // change back to 10
         let page = req.query.page || 1;
 
+        // EDIT THE SORTING-SORT BY UPDATEDAT!!
         const data = await Post.aggregate([ { $sort: { createdAt: -1 } }]) // this makes the oldest post be at the top
         .skip(perPage * page - perPage)
         .limit(perPage)
