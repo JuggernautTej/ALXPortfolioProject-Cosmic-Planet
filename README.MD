@@ -13,6 +13,7 @@ Welcome to Cosmic Planet, a blog post web application designed for the space ent
 -   Installation
 -   Usage
 -   Project Structure
+-   Backend End Points
 -   Contributing
 
 ## Features
@@ -122,6 +123,38 @@ You can now go through the web app, view web posts, sign in and manage posts.
     ├── app.js 
     └── package.json
     └── README.md
+
+## Backend End Points
+
+1.  Home Page: GET /
+    
+2.  Post Page: GET /post/:id
+
+3.  Search Page: POST /search
+
+4.  About Page: GET /about
+
+5.  Curator Panel Page: GET /admin
+
+6.  Sign In: POST /admin
+
+7.  Sign Up Route: POST /register
+
+8.  Dashboard Page: GET /dashboard
+
+9.  Create New Post Page: GET /add-post
+
+10. Add Post Route: POST /add-blog
+
+11. Retrieve Post to Edit Route: GET /edit-post/:id
+
+12. Edit Retrieved Post: PUT /edit-post/:id
+
+13. Delete Post Route: DELETE /delete-post/:id
+
+14. Logout Route: GET /logout
+
+
 
 ## Contributing
 
