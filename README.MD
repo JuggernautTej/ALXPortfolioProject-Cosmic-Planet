@@ -88,39 +88,39 @@ ALXPortfolioProject-Cosmic-Planet/
 │ │ └── logo1.png 
 │ │ └── logo2.png 
 │ └── js/
- │ │ └── universal.js 
- ├── server/ 
- │ ├── config/
- │ │ └── db.js 
- │ ├── helpers/ 
- │ │ └── routeHelpers.png 
- │ ├── routes/ 
- │ │ └── admin.js 
- │ │ └── main.js 
- │ └── tables/ 
- │ │ └── Post.js 
- │ │ └── Users.js 
- ├── views/ 
- │ ├── admin/ 
- │ │ └── add-post.ejs 
- │ │ └── dashboard.ejs 
- │ │ └── edit-post.ejs 
- │ │ └── login.ejs 
- │ ├── layouts/ 
- │ │ └── admin.ejs 
- │ │ └── main.ejs 
- │ ├── parts/ 
- │ │ └── adminHeader.ejs 
- │ │ └── header.ejs 
- │ │ └── footer.ejs 
- │ │ └── search.ejs 
- │ ├── index.ejs 
- │ ├── post.ejs 
- │ ├── search.ejs 
- │ └── about.ejs 
- ├── .env 
- ├── app.js 
- └── package.json
+│ │ └── universal.js 
+├── server/ 
+│ ├── config/
+│ │ └── db.js 
+│ ├── helpers/ 
+│ │ └── routeHelpers.png 
+│ ├── routes/ 
+│ │ └── admin.js 
+│ │ └── main.js 
+│ └── tables/ 
+│ │ └── Post.js 
+│ │ └── Users.js 
+├── views/ 
+│ ├── admin/ 
+│ │ └── add-post.ejs 
+│ │ └── dashboard.ejs 
+│ │ └── edit-post.ejs 
+│ │ └── login.ejs 
+│ ├── layouts/ 
+│ │ └── admin.ejs 
+│ │ └── main.ejs 
+│ ├── parts/ 
+│ │ └── adminHeader.ejs 
+│ │ └── header.ejs 
+│ │ └── footer.ejs 
+│ │ └── search.ejs 
+│ ├── index.ejs 
+│ ├── post.ejs 
+│ ├── search.ejs 
+│ └── about.ejs 
+├── .env 
+├── app.js 
+└── package.json
 └── README.md
 
 ## Contributing
